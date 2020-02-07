@@ -11,11 +11,14 @@ class SignupForm extends React.Component {
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleOnChange () {
-
+    handleOnChange (e) {
+        e.preventDefault();
+        console.log('handle change-->',e.target.value);
     }
 
-    handleSubmit () {
+    handleSubmit (e) {
+        e.preventDefault();
+        console.log('handle submit-->');
 
     }
     render() {

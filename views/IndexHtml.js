@@ -11,11 +11,17 @@ class IndexHtml extends React.Component {
         return (
         <html>
         <head>
+            <link
+                rel="stylesheet"
+                content="text/css"
+                href="/dist/css/header.css"
+            />
             <title>Universal React server bundle</title>
         </head>
         <body>
         <div id="app" dangerouslySetInnerHTML={{__html: reactHtml}}/>
-        <script src="./public/server.bundle.js"></script>
+
+        <script src="/dist/server.bundle.js"></script>
         </body>
         </html>);
     }

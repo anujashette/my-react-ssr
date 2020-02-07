@@ -3,7 +3,7 @@ import Header from "./HomeComponents/Header";
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
-class HomeHtml extends React.Component {
+class Home extends React.Component {
     render() {
         const reactHtml = ReactDOMServer.renderToString(<Header/>);
         return (
@@ -19,15 +19,16 @@ class HomeHtml extends React.Component {
             <link
                 rel="stylesheet"
                 content="text/css"
-                href="../style/header.css"
+                href="/dist/css/header.css"
             />
             </head>
                 <body>
                     <div id="app" dangerouslySetInnerHTML={{__html: reactHtml}}/>
+                    <script src="/dist/server.bundle.js"></script>
                 </body>
             </html>
         );
     }
 };
 
-module.exports = HomeHtml;
+module.exports = Home;
