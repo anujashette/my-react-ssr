@@ -9,7 +9,7 @@ class Home extends React.Component {
         return (
             <html>
             <head>
-            <meta httpEquiv ="Content-Type" content="text/css" charSet="utf-8"/>
+            <meta httpEquiv ="Content-Type" content="text/html" charSet="utf-8"/>
                 <base href="/"/>
             <title>BookEventZ</title>
             <link
@@ -24,7 +24,7 @@ class Home extends React.Component {
             </head>
                 <body>
                     <div id="app" dangerouslySetInnerHTML={{__html: reactHtml}}/>
-                    <script src="/dist/server.bundle.js"></script>
+                    <script src="/dist/bundle/client.bundle.js"></script>
                 </body>
             </html>
         );

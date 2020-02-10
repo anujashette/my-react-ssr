@@ -15,5 +15,5 @@ app.get('/', function(req, res) {
     res.render('IndexHtml');
 });
 
-app.listen(3000);
-console.log("App is running on http://localhost:3000");
+app.listen(6006);
+console.log("App is running on http://localhost:6006");

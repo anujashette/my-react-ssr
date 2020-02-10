@@ -21,7 +21,7 @@ class IndexHtml extends React.Component {
         <body>
         <div id="app" dangerouslySetInnerHTML={{__html: reactHtml}}/>
 
-        <script src="/dist/server.bundle.js"></script>
+        <script src="/dist/bundle/index.bundle.js"></script>
         </body>
         </html>);
     }

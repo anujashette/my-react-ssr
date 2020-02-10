@@ -1,0 +1,47 @@
+.header-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+ .bookeventz-icon {
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+
+ .bookeventz-icon > img {
+     width: 25px;
+     height: 25px;
+ }
+
+ .bookeventz-icon > span {
+     font-size: 1.3em;
+     color: #5800a9;
+     font-weight: bold;
+ }
+
+ .header-content > select {
+     width: 100px;
+     height: 25px;
+     margin: 10px 20px;
+ }
+
+ .header-content > div {
+     width: 100px;
+     border-left: 1px solid #969696;
+ }
+
+ /*.header-content > div > div {*/
+     /*background: url("http://media.bookeventz.com/html/bookeventz.com/asset/images/desktopHeaderImage.png");*/
+ /*}*/
+
+ .header-content > div > div {
+     text-align: end;
+     padding: 10px 20px;
+     cursor: pointer;
+ }

@@ -1,18 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const clientConfig = {
-        entry: './views/index.js',
+        entry:{
+            client: './browser/Home.js',
+            index: './browser/index.js'
+        },
         target: 'web',
         output: {
-            path: path.resolve(__dirname, 'dist'),
-            filename: 'public/client.bundle.js'
+            path: path.resolve(__dirname, 'dist/bundle'),
+            filename: "[name].bundle.js"
         },
         resolve: {
             extensions: ['.js', '.jsx', '.css', '.scss']
         },
-        module: {
+    devtool: "cheap-module-source-map",
+    module: {
             rules: [
                 {
                     test: /\.(js|jsx)$/,
@@ -32,35 +37,41 @@ const clientConfig = {
             ignored: /node_modules/,
         },
         plugins: [
-            new webpack.HotModuleReplacementPlugin()
-        ],
-        devServer: {
-            contentBase: './dist',
-            inline: true,
-            hot: true,
-            // host:'192.168.0.90',
-            // port: '4200',
-            historyApiFallback: true
-        }
+            new UglifyJSPlugin({
+                sourceMap: true,
+                uglifyOptions: { ecma: 8 },
+            }),
+            new webpack.IgnorePlugin(/(locale)/, /node_modules.+(moment)/)
+        ]
     }
 ;
 
 const serverConfig = {
-    entry: './views/Home.js',
+    entry: {
+        server: './views/Home.js',
+        IndexHtml: './views/IndexHtml.js'
+    },
     target: "node",
-    devtool: "source-map",
-    externals: [nodeExternals({
-        importType: 'umd'
-    })],
+    devtool: "cheap-module-source-map",
+    externals: [nodeExternals()],
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'server.bundle.js'
+        path: path.resolve(__dirname, 'dist/bundle'),
+        filename: "[name].bundle.js",
+        libraryTarget: "commonjs2"
     },
     resolve: {
         extensions: ['.js', '.jsx', '.css', '.scss']
     },
     module: {
         rules: [
+            {
+                loader: 'babel-loader',
+                query: {
+                    presets:['@babel/preset-env', '@babel/preset-react']
+                },
+                test: /\.jsx?$/,
+                exclude: /(node_modules|bower_components)/
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
@@ -72,15 +83,7 @@ const serverConfig = {
                 loaders: ['style-loader', 'css-loader'],
             }
         ]
-    },
-    plugins: [
-        new webpack.BannerPlugin({
-            banner: 'require("source-map-support").install();',
-            raw: true,
-            entryOnly: false
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-    ]
+    }
 };
 
 module.exports = [

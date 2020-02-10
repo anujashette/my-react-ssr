@@ -5,9 +5,9 @@ import styles from '../../style/hearderStyle';
 class Header extends React.Component {
     constructor(props) {
         super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    // this.handleLogin = this.handleLogin.bind(this);
     }
-    handleLogin () {
+    handleLogin = () => {
         console.log('login');
         alert('login ');
     }
